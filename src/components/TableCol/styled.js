@@ -8,7 +8,7 @@ export const TableCol = styled.div`
   }
 `
 
-export const TableColHeader = styled.div`
+export const TableColHeader = styled.h2`
   border-bottom: 2px solid #fffae6;
   font-size: 24px;
   font-weight: 400;

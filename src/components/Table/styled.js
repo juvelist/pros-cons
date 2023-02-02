@@ -13,7 +13,7 @@ export const Table = styled.div`
   width: 800px;
 `
 
-export const TableHeader = styled.div`
+export const TableHeader = styled.h1`
   border-bottom: 2px solid #fffae6;
   font-size: 32px;
   font-weight: 500;

@@ -1,8 +1,8 @@
 import React from 'react';
 import * as Styled from './styled'
-import ColListItem from '../ColListItem/index';
+import {ColListItem} from '../ColListItem/index';
 
-const ColList = (props) => {
+export const ColList = (props) => {
   return (
     <Styled.ColList>
       {props.list.map((data, index) =>
@@ -11,5 +11,3 @@ const ColList = (props) => {
     </Styled.ColList>
   );
 };
-
-export default ColList;

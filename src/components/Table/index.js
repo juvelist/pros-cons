@@ -1,37 +1,34 @@
 import React from 'react'
-import TableCol from '../TableCol'
+import {TableCol} from '../TableCol'
 import * as Styled from './styled'
 
 const prosConsData = [
   {
     title: 'Pros',
     list: [
-      'test',
-      'test',
-      'test',
-      'test',
-      'test',
-      'test',
-      'test',
-      'test',
-      'test',
-      'test',
-      'test',
-      'test'
+      'It\'s really tasty',
+      'It\'s really tasty',
+      'It\'s really tasty',
+      'It\'s really tasty',
+      'It\'s really tasty',
+      'It\'s really tasty',
+      'It\'s really tasty',
+      'It\'s really tasty',
+      'It\'s really tasty',
+      'It\'s really tasty',
+      'It\'s really tasty'
     ]
   },
   {
     title: 'Cons',
     list: [
-      'test',
-      'test',
-      'test',
-      'test',
+      'Makes me fat',
+      'Too expensive'
     ]
   }
 ];
 
-const Table = () => {
+export const Table = () => {
 
   const headerTitle = 'Should I eat at McDonalds?'
 
@@ -46,5 +43,3 @@ const Table = () => {
     </Styled.Table>
   );
 };
-
-export default Table;
