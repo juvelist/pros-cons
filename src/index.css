@@ -21,6 +21,15 @@ ul li {
   list-style: none;
 }
 
+input {
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+  border:none;
+  color: #fffae6;
+  outline: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

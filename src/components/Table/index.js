@@ -7,7 +7,7 @@ const prosConsData = [
     title: 'Pros',
     list: [
       'It\'s really tasty',
-      'It\'s really tasty',
+      'It\'s really tasty for me',
       'It\'s really tasty',
       'It\'s really tasty',
       'It\'s really tasty',
