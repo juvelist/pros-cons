@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 import * as Styled from './styled'
-import {ColList} from './ColList';
+import {ColList} from './ColList'
 
-export const TableCol = (props) => {
+export const TableCol = ({title, lists}) => {
   return (
     <Styled.TableCol>
-      <Styled.TableColHeader>{props.title}</Styled.TableColHeader>
-      <ColList list={props.list}></ColList>
+      <Styled.TableColHeader>{title}</Styled.TableColHeader>
+      <ColList lists={lists}></ColList>
     </Styled.TableCol>
   );
 };

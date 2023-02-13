@@ -2,11 +2,12 @@ import React from 'react'
 import * as Styled from './styled'
 import {ColListTextField} from '../ColListTextField'
 
-export const ColListItem = (props) => {
+export const ColListItem = ({val, index, updateValue}) => {
+
   return (
     <Styled.ColListItem>
-      {props.index + 1}.
-      <ColListTextField val={props.val}></ColListTextField>
+      {index + 1}.
+      <ColListTextField index={index} val={val} updateValue={updateValue}></ColListTextField>
     </Styled.ColListItem>
   );
 };
