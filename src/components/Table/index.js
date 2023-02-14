@@ -29,15 +29,27 @@ const prosConsData = [
 ];
 
 export const Table = () => {
-  const [tableData, setTable] = useState(prosConsData)
-  const headerTitle = 'Should I eat at McDonalds?'
+  let tableDataWithValues = prosConsData.map(columnDataWithValues => {
+    const title = columnDataWithValues.title
+    const list = columnDataWithValues.list.map(columnData => {
+      columnData = {
+        id: (Math.random()*1000000).toFixed(),
+        value: columnData
+      }
+      return columnData
+    })
+    return {title, list}
+  })
+
+  const [tableData] = useState(tableDataWithValues)
+  const headerTitle = '¿Debo comer en McDonalds?'
 
   return (
     <Styled.Table>
       <Styled.TableHeader>{headerTitle}</Styled.TableHeader>
       <Styled.TableBody>
-        {tableData.map(data =>
-          <TableCol key={data.title} title={data.title} lists={data.list}></TableCol>
+        {tableData.length > 0 && tableData.map((data, index) =>
+          <TableCol key={index} title={data.title} lists={data.list}></TableCol>
         )}
       </Styled.TableBody>
     </Styled.Table>

@@ -5,57 +5,83 @@ import {ColListItem} from '../ColListItem/index'
 export const ColList = ({lists}) => {
   const [list, setList] = useState(lists)
 
-  const addNewValue = (newValue) => {
+  const addNewValue = (newValue, index) => {
     const newList = [...list]
-    newList.pop()
-    newList.push(newValue, null)
+    newList[index].value = newValue
+
+    const newEmptyValue = createEmptyValue()
+    newList.push(newEmptyValue)
+
     setList(newList)
   }
   const addValue = (newValue, index) => {
-    const newList = list.map((item, i) => {
-      if (i === index) {
-        item = newValue
-      }
-      return item
-    })
+    const newList = [...list]
+    newList[index].value = newValue
+
     setList(newList)
   }
 
-  const addEmptyValue = () => {
-    setList([...list, null])
-  }
   const removeEmptyValue = (index) => {
-    const newList = list.filter((item, i) => i !== index && item)
-    console.log('newList', newList)
-    setList(newList)
-    console.log('list', list)
+    const newList = [...list]
+    const filteredList = newList.filter((item, i) => i !== index && item)
 
-    // 
+    const newEmptyValue = createEmptyValue()
+    filteredList.push(newEmptyValue)
+
+    setList(filteredList)
+  }
+
+  const createEmptyValue = () => {
+    return {
+      id: (Math.random()*1000000).toFixed(),
+      value: null
+    }
+  }
+  const addEmptyValue = () => {
+    if (list[list.length - 1].value) {
+      const newEmptyValue = createEmptyValue()
+      setList([...list, newEmptyValue])
+    }
   }
 
   const updateValue = (updatedValues, index) => {
     const [oldValue, newValue] = updatedValues
 
-    if(!oldValue || oldValue.length === 0) {
-      console.log('Add new listItem')
-      addNewValue(newValue)
-    } else if (newValue.length === 0) {
-      console.log('Delete current listItem', index)
+    if(newValue.length === 0) {
       removeEmptyValue(index)
+    } else if (!oldValue || oldValue.length === 0) {
+      addNewValue(newValue, index)
     } else {
       addValue(newValue, index)
     }
   }
 
   useEffect(() => {
-    setList([...list, null])
+    addEmptyValue()
   }, []);
 
   return (
     <Styled.ColList>
-      {list.map((val, index) =>
-        <ColListItem key={index} index={index} val={val} updateValue={updateValue}></ColListItem>
+      {list.map((listItem, index) => {
+          return (
+            <ColListItem key={listItem.id} index={index} val={listItem.value} updateValue={updateValue}></ColListItem>
+          )
+        }
       )}
     </Styled.ColList>
   );
 };
+
+
+// // add id
+//
+// const obj = {
+//   a: 1,
+//   b: 2
+// }
+//
+// obj.a = 3
+//
+// const Comp = React.memo(({obj}) => {
+//   return obj.a + obj.b
+// })
