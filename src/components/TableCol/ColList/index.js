@@ -23,10 +23,7 @@ export const ColList = ({lists}) => {
 
   const removeEmptyValue = (index) => {
     const newList = [...list]
-    const filteredList = newList.filter((item, i) => i !== index && item)
-
-    const newEmptyValue = createEmptyValue()
-    filteredList.push(newEmptyValue)
+    const filteredList = newList.filter((item, i) => i !== index)
 
     setList(filteredList)
   }
@@ -71,17 +68,3 @@ export const ColList = ({lists}) => {
     </Styled.ColList>
   );
 };
-
-
-// // add id
-//
-// const obj = {
-//   a: 1,
-//   b: 2
-// }
-//
-// obj.a = 3
-//
-// const Comp = React.memo(({obj}) => {
-//   return obj.a + obj.b
-// })
