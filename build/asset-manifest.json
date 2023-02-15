@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/pros-cons/static/css/main.cd0b9e6d.css",
+    "main.js": "/pros-cons/static/js/main.084287fd.js",
+    "static/js/787.ca46c038.chunk.js": "/pros-cons/static/js/787.ca46c038.chunk.js",
+    "index.html": "/pros-cons/index.html",
+    "main.cd0b9e6d.css.map": "/pros-cons/static/css/main.cd0b9e6d.css.map",
+    "main.084287fd.js.map": "/pros-cons/static/js/main.084287fd.js.map",
+    "787.ca46c038.chunk.js.map": "/pros-cons/static/js/787.ca46c038.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cd0b9e6d.css",
+    "static/js/main.084287fd.js"
+  ]
+}
