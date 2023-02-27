@@ -2,59 +2,51 @@ import React, {useEffect, useState} from 'react'
 import * as Styled from './styled'
 import {ColListItem} from '../ColListItem/index'
 
+const createEmptyValue = () => {
+  return {
+    id: (Math.random()*1000000).toFixed(),
+    value: null
+  }
+}
+
 export const ColList = ({lists}) => {
   const [list, setList] = useState(lists)
 
-  const addNewValue = (newValue, index) => {
-    const newList = [...list]
-    newList[index].value = newValue
-
-    const newEmptyValue = createEmptyValue()
-    newList.push(newEmptyValue)
-
-    setList(newList)
-  }
-  const addValue = (newValue, index) => {
-    const newList = [...list]
-    newList[index].value = newValue
-
-    setList(newList)
-  }
-
-  const removeEmptyValue = (index) => {
-    const newList = [...list]
-    const filteredList = newList.filter((item, i) => i !== index)
-
-    setList(filteredList)
-  }
-
-  const createEmptyValue = () => {
-    return {
-      id: (Math.random()*1000000).toFixed(),
-      value: null
-    }
-  }
-  const addEmptyValue = () => {
+  const addEmptyValue = (list) => {
     if (list[list.length - 1].value) {
       const newEmptyValue = createEmptyValue()
       setList([...list, newEmptyValue])
     }
   }
 
-  const updateValue = (updatedValues, index) => {
-    const [oldValue, newValue] = updatedValues
+  const updateValue = (updatedValue, index) => {
+    setList(prevState => {
+      const prevValue = prevState[index].value
 
-    if(newValue.length === 0) {
-      removeEmptyValue(index)
-    } else if (!oldValue || oldValue.length === 0) {
-      addNewValue(newValue, index)
-    } else {
-      addValue(newValue, index)
-    }
+      if(updatedValue.length === 0) {
+        return prevState.filter((item, i) => i !== index)
+      }
+
+      const newState = prevState.map((stateItem, i) => {
+        if(i === index) {
+          return {
+            ...stateItem,
+            value: updatedValue
+          }
+        }
+        return stateItem
+      })
+
+      const newEmptyValue = createEmptyValue()
+      if(!prevValue) {
+        return [...newState, newEmptyValue]
+      }
+      return newState
+    })
   }
 
   useEffect(() => {
-    addEmptyValue()
+    addEmptyValue(list)
   }, []);
 
   return (
